@@ -143,7 +143,7 @@
 
 
             // Sets the timeout values and returns the needed value's index
-            function SearchWithin(letter) {
+            function SearchWithin() {
 
                 if(myTimeout) {clearTimeout(myTimeout)}
                 myTimeout = setTimeout (function(){ResetStack()},2000)
@@ -153,7 +153,7 @@
 
 
             // Initialize the Subarray according to the first entered letter
-            function PopulateSubArray(letter){
+            function PopulateSubArray(){
 
                     OriginalArray.forEach(function(item, index){
                         if (item.toLowerCase().indexOf(LettersBuffer.toString().toLowerCase()) == 0) {
@@ -445,10 +445,10 @@
 
                     if(!KeysCounter)
                     {
-                         PopulateSubArray(keyPressed);
+                         PopulateSubArray();
                          KeysCounter++;
                     }
-                    var currentKeyIndex = SearchWithin(keyPressed);
+                    var currentKeyIndex = SearchWithin();
                    
                     if (typeof currentKeyIndex != 'undefined'){ //if key code found in array
                         ++currentIndex;
