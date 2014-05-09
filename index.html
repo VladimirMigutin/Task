@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Stylish Select 0.4.9 plugin examples</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="stylish-select.css" />
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        <script src="jquery.stylish-select.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            $(function(){
+
+                $('#my-dropdown, #my-dropdown2, #my-dropdown3, #my-dropdown4, #my-dropdown5, #my-dropdown6, #my-dropdown7, #my-dropdown8, #my-dropdown9').sSelect();
+
+                //set max height
+                $('#my-dropdownCountries').sSelect({ddMaxHeight: '300px'});
+
+                //set value on click
+                $('#setVal').click(function(){
+                    $('#my-dropdown5').getSetSSValue('4');
+                });
+
+                //get value on click
+                $('#getVal').click(function(){
+                    alert('The value is: '+$('#my-dropdown5').getSetSSValue());
+                });
+
+                //alert change event
+                $('#my-dropdownChange').sSelect().change(function(){alert('changed')});
+
+                //add options to select and update
+                $('#addOptions').click(function(){
+                    $('#my-dropdown6').append('<option value="newOpt">New Option</option>').resetSS();
+                    return false;
+                });
+
+            });
+        </script>
+
+        <style type="text/css">
+            body {font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+            .selCont {clear:both; margin-bottom:20px; padding-bottom:40px; float:left; border-bottom:dotted 1px #000; width:600px;}
+        </style>
+
+    </head>
+    <body>
+        <form action="" method="post">
+            <h1>Stylish Select 0.4.9</h1>
+            <h2>A cross-browser, accessible alternative to the standard form element which can be fully customised with CSS</h2>
+            <p>Stylish Select attempts to replicate the functionality of the browser default select box as closely as possible with support for keyboard navigation, and intelligent positioning.</p>
+            <p>Stylish Select aims to have a minimal code footprint and weighs in at just over 3KB when minified.</p>
+            <a href="http://github.com/scottdarby/Stylish-Select">Get latest source code from GitHub</a>
+            <h2>Usage</h2>
+            <p>First, include the stylesheet, jQuery and the stylish select .js file in your html head tag.</p>
+            <p>The plugin can be used to replace any select with the following:</p>
+            <pre class="brush: javascript">
+                    $(document).ready(function(){
+                    $('#my-dropdown').sSelect();
+                    });
+            </pre>
+            
+            <div class="selCont">
+                <h2>Simplest example, option selected by default</h2>
+                <p>You can use the alphabetical and arrow keys to navigate the list as you would a browser default select.</p>
+                <select id="my-dropdown" name="my-dropdown">
+                    <option value="ab">Abkhaz</option>
+                    <option value="aa">Afar</option>
+                    <option value="af">Afrikaans</option>
+                    <option value="ak">Akan</option>
+                    <option value="sq">Albanian</option>
+                    <option value="am">Amharic</option>
+                    <option value="ar">Arabic</option>
+                    <option value="an">Aragonese</option>
+                    <option value="hy">Armenian</option>
+                    <option value="as">Assamese</option>
+                    <option value="av">Avaric</option>
+                    <option value="ae">Avestan</option>
+                    <option value="ay">Aymara</option>
+                    <option value="az">Azerbaijani</option>
+                    <option value="bm">Bambara</option>
+                    <option value="bn">Bangla</option>
+                    <option value="bu">Bantu</option>
+                    <option value="ba">Bashkir</option>
+                    <option value="eu">Basque</option>
+                    <option value="be">Belarussian</option>
+                    <option value="bn">Bengali</option>
+                    <option value="bh">Bihari</option>
+                    <option value="bi">Bislama</option>
+                    <option value="bs">Bosnian</option>
+                    <option value="br">Breton</option>
+                    <option value="bg">Bulgarian</option>
+                    <option value="my">Burmese</option>
+                    <option value="ca">Catalan</option>
+                    <option value="ch">Chamorro</option>
+                    <option value="ce">Chechen</option>
+                    <option value="ny">Chichewa</option>
+                    <option value="zh">Chinese</option>
+                    <option value="cv">Chuvash</option>
+                    <option value="ce">Creole</option>
+                    <option value="kw">Cornish</option>
+                    <option value="co">Corsican</option>
+                    <option value="cr">Cree</option>
+                    <option value="hr">Croatian</option>
+                    <option value="cs">Czech</option>
+                    <option value="da">Danish</option>
+                    <option value="dv">Divehi</option>
+                    <option value="nl">Dutch</option>
+                    <option value="dz">Dzongkha</option>
+                    <option value="en">English</option>
+                    <option value="eo">Esperanto</option>
+                    <option value="et">Estonian</option>
+                    <option value="ee">Ewe</option>
+                    <option value="fo">Faroese</option>
+                    <option value="fj">Fijian</option>
+                    <option value="fi">Finnish</option>
+                    <option value="fr">French</option>
+                    <option value="nl">Flemish</option>
+                    <option value="ff">Fula</option>
+                    <option value="gl">Galician</option>
+                    <option value="ka">Georgian</option>
+                    <option value="de">German</option>
+                    <option value="el">Greek</option>
+                    <option value="gn">Guaraní</option>
+                    <option value="gu">Gujarati</option>
+                    <option value="ht">Haitian</option>
+                    <option value="ha">Hausa</option>
+                    <option value="he">Hebrew</option>
+                    <option value="hz">Herero</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ho">Hiri Motu</option>
+                    <option value="hu">Hungarian</option>
+                    <option value="ia">Interlingua</option>
+                    <option value="id">Indonesian</option>
+                    <option value="ie">Interlingue</option>
+                    <option value="ga">Irish</option>
+                    <option value="ig">Igbo</option>
+                    <option value="ik">Inupiaq</option>
+                    <option value="io">Ido</option>
+                    <option value="is">Icelandic</option>
+                    <option value="it">Italian</option>
+                    <option value="iu">Inuktitut</option>
+                    <option value="ja">Japanese</option>
+                    <option value="jv">Javanese</option>
+                    <option value="kl">Kalaallisut</option>
+                    <option value="kn">Kannada</option>
+                    <option value="kr">Kanuri</option>
+                    <option value="ks">Kashmiri</option>
+                    <option value="kk">Kazakh</option>
+                    <option value="km">Khmer</option>
+                    <option value="ki">Kikuyu</option>
+                    <option value="rw">Kinyarwanda</option>
+                    <option value="ky">Kyrgyz</option>
+                    <option value="kv">Komi</option>
+                    <option value="kg">Kongo</option>
+                    <option value="ko">Korean</option>
+                    <option value="ku">Kurdish</option>
+                    <option value="kj">Kwanyama</option>
+                    <option value="la">Latin</option>
+                    <option value="lb">Luxembourgish</option>
+                    <option value="lg">Ganda</option>
+                    <option value="li">Limburgish</option>
+                    <option value="ln">Lingala</option>
+                    <option value="lo">Lao</option>
+                    <option value="lt">Lithuanian</option>
+                    <option value="lu">Luba-Katanga</option>
+                    <option value="lv">Latvian</option>
+                    <option value="gv">Manx</option>
+                    <option value="mk">Macedonian</option>
+                    <option value="mg">Malagasy</option>
+                    <option value="ms">Malay</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="mt">Maltese</option>
+                    <option value="mi">M_ori</option>
+                    <option value="mr">Marathi</option>
+                    <option value="mh">Marshallese</option>
+                    <option value="me">Montenegrin</option>
+                    <option value="mn">Mongolian</option>
+                    <option value="na">Nauruan</option>
+                    <option value="nv">Navajo</option>
+                    <option value="nb">Norwegian Bokmål</option>
+                    <option value="nd">North Ndebele</option>
+                    <option value="ne">Nepali</option>
+                    <option value="ng">Ndonga</option>
+                    <option value="no">Norwegian</option>
+                    <option value="ii">Nuosu</option>
+                    <option value="nr">South Ndebele</option>
+                    <option value="oc">Occitan</option>
+                    <option value="oj">Ojibwe</option>
+                    <option value="cu">Old Church Slavonic</option>
+                    <option value="om">Oromo</option>
+                    <option value="or">Oriya</option>
+                    <option value="os">Ossetian</option>
+                    <option value="pa">Panjabi</option>
+                    <option value="pi">P_li</option>
+                    <option value="fa">Persian</option>
+                    <option value="fa">Farsi</option>
+                    <option value="fa">Dari</option>
+                    <option value="pl">Polish</option>
+                    <option value="ps">Pashto</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="qu">Quechua</option>
+                    <option value="rm">Romansh</option>
+                    <option value="rn">Kirundi</option>
+                    <option value="ro">Romanian</option>
+                    <option value="ru">Russian</option>
+                    <option value="sa">Sanskrit</option>
+                    <option value="sc">Sardinian</option>
+                    <option value="sd">Sindhi</option>
+                    <option value="se">Northern Sami</option>
+                    <option value="sm">Samoan</option>
+                    <option value="sg">Sango</option>
+                    <option value="sr">Serbian</option>
+                    <option value="gd">Scottish Gaelic</option>
+                    <option value="sn">Shona</option>
+                    <option value="si">Sinhala</option>
+                    <option value="sk">Slovak</option>
+                    <option value="sl">Slovene</option>
+                    <option value="so">Somali</option>
+                    <option value="st">Southern Sotho</option>
+                    <option value="es">Spanish</option>
+                    <option value="su">Sundanese</option>
+                    <option value="sw">Swahili</option>
+                    <option value="ss">Swati</option>
+                    <option value="sv">Swedish</option>
+                    <option value="ta">Tamil</option>
+                    <option value="te">Telugu</option>
+                    <option value="tg">Tajik</option>
+                    <option value="th">Taiwanese</option>
+                    <option value="ti">Tigrinya</option>
+                    <option value="bo">Tibetan</option>
+                    <option value="tk">Turkmen</option>
+                    <option value="tl">Tagalog</option>
+                    <option value="tl">Filipino</option>
+                    <option value="tn">Tswana</option>
+                    <option value="to">Tonga</option>
+                    <option value="tr">Turkish</option>
+                    <option value="ts">Tsonga</option>
+                    <option value="tt">Tatar</option>
+                    <option value="tw">Twi</option>
+                    <option value="ty">Tahitian</option>
+                    <option value="ug">Uighur</option>
+                    <option value="uk">Ukrainian</option>
+                    <option value="ur">Urdu</option>
+                    <option value="uz">Uzbek</option>
+                    <option value="ve">Venda</option>
+                    <option value="vi">Vietnamese</option>
+                    <option value="vk">Viking</option>
+                    <option value="vo">Volapük</option>
+                    <option value="wa">Walloon</option>
+                    <option value="cy">Welsh</option>
+                    <option value="wo">Wolof</option>
+                    <option value="fy">Western Frisian</option>
+                    <option value="xh">Xhosa</option>
+                    <option value="yi">Yiddish</option>
+                    <option value="yo">Yoruba</option>
+                    <option value="za">Zhuang</option>
+                    <option value="zu">Zulu</option>
+
+                </select>
+                </select>
+            </div>
+            <div class="selCont">
+
+
+
+
+                <h2>Change event</h2>
+                <p>Stylish Select alters the original select on the page, so you can access it's change event:</p>
+                <pre class="brush: javascript">
+
+                //change event
+                $('#my-dropdownChange').sSelect().change(function(){alert('changed')});
+
+                </pre>
+                <select id="my-dropdownChange" name="my-dropdown">
+                    <option value="1">A cappella</option>
+                    <option value="test">Acid Jazz</option>
+                    <option value="3" selected="selected">Big Band</option>
+                    <option value="4">Big Beat</option>
+                    <option value="5">Cakewalk</option>
+                    <option value="6">Calenda</option>
+                    <option value="7">Dark ambient</option>
+                    <option value="8">Dark cabaret</option>
+                </select>
+            </div>
+            <div class="selCont">
+
+
+
+
+                <h2>Grouped options</h2>
+                <p>Stylish Select supports optgroups and also optgroups and options together.</p>
+                <select id="my-dropdown2" name="my-dropdown">
+                    <option>Please select</option>
+                    <optgroup label="Tool">
+                        <option value="1">Opiate</option>
+                        <option value="2">Undertow</option>
+                        <option value="3">Aenima</option>
+                        <option value="4">Lateralus</option>
+                    </optgroup>
+                    <optgroup label="A Tribe Called Quest">
+                        <option value="5">People's Instinctive Travels and the Paths of Rhythm</option>
+                        <option value="6">The Low End Theory</option>
+                        <option selected="selected" value="7">Midnight Marauders</option>
+                        <option value="8">Beats, Rhymes and Life</option>
+                        <option value="9">The Love Movement</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div id="get-set" class="selCont">
+                <h2>Getting/setting the value</h2>
+                <pre class="brush: javascript">
+
+
+
+            //set value
+            $('#setVal').click(function(){
+            $('#my-dropdown5').getSetSSValue(4);
+            });
+
+            //get value
+            $('#getVal').click(function(){
+            alert('The value is: '+$('#my-dropdown5').getSetSSValue());
+            });
+
+
+
+                </pre>
+                <p><a id="setVal" href="javascript:void(0)">Set value to 4</a></p>
+                <p><a id="getVal" href="javascript:void(0)">Get value</a></p>
+                <select id="my-dropdown5" name="my-dropdown">
+                    <option value="1">Lorem</option>
+                    <option value="2">Ipsum</option>
+                    <option value="3">Dolor</option>
+                    <option value="4">Sit</option>
+                    <option value="5">Amet</option>
+                    <option value="6">Consectetuer</option>
+                    <option value="7">Adipiscing</option>
+                </select>
+            </div>
+            <div id="update" class="selCont">
+                <h2>Add new options to Stylish Select</h2>
+                <pre class="brush: javascript">
+                        //add options to select and update
+                        $('#addOptions').click(function(){
+                        $('#my-dropdown6').append('&lt;option value="newOpt">New Option&lt;/option&gt;').resetSS();
+                        });
+                </pre>
+                <p>If you add or remove options from the initial select element on the page, be sure to call the .resetSS() method on the select to update the Stylish Select replacement.</p>
+
+                <p><a id="addOptions" href="javascript:void(0)">Add new options to select and update</a></p>
+                <select id="my-dropdown6" name="my-dropdown">
+                    <option value="1">Lorem</option>
+                    <option value="2">Ipsum</option>
+                    <option value="3">Dolor</option>
+                    <option value="4">Sit</option>
+                    <option value="5">Amet</option>
+                    <option value="6">Consectetuer</option>
+                    <option value="7">Adipiscing</option>
+                    <option value="7">Adipiscing</option>
+                    <option value="7">Adipiscing</option>
+                    <option value="7">Adipiscing</option>
+                </select>
+            </div>
+            <div class="selCont">
+                <h2>Max-height for large lists</h2>
+                <pre class="brush: javascript">
+                        $('#my-dropdown').sSelect({ddMaxHeight: '300px'});
+                </pre>
+                <select id="my-dropdownCountries" name="my-dropdown">
+                    <option value="1">Afghanistan</option>
+                    <option value="1">Akrotiri</option>
+                    <option value="1">Albania</option>
+                    <option value="1">Algeria</option>
+                    <option value="1">American Samoa</option>
+                    <option value="1">Andorra</option>
+                    <option value="1">Angola</option>
+                    <option value="1">Anguilla</option>
+                    <option value="1">Antarctica</option>
+                    <option value="1">Antigua and Barbuda</option>
+                    <option value="1">Argentina</option>
+                    <option value="1">Armenia</option>
+                    <option value="1">Aruba</option>
+                    <option value="1">Ashmore and Cartier Islands</option>
+                    <option value="1">Australia</option>
+                    <option value="1">Austria</option>
+                    <option value="1">Azerbaijan</option>
+                    <option value="1">Bahamas, The</option>
+                    <option value="1">Bahrain</option>
+                    <option value="1">Bangladesh</option>
+                    <option value="1">Barbados</option>
+                    <option value="1">Bassas da India</option>
+                    <option value="1">Belarus</option>
+                    <option value="1">Belgium</option>
+                    <option value="1">Belize</option>
+                    <option value="1">Benin</option>
+                    <option value="1">Bermuda</option>
+                    <option value="1">Bhutan</option>
+                    <option value="1">Bolivia</option>
+                    <option value="1">Bosnia and Herzegovina</option>
+                    <option value="1">Botswana</option>
+                    <option value="1">Bouvet Island</option>
+                    <option value="1">Brazil</option>
+                    <option value="1">British Indian Ocean Territory</option>
+                    <option value="1">British Virgin Islands</option>
+                    <option value="1">Brunei</option>
+                    <option value="1">Bulgaria</option>
+                    <option value="1">Burkina Faso</option>
+                    <option value="1">Burma</option>
+                    <option value="1">Burundi</option>
+                    <option value="1">Cambodia</option>
+                    <option value="1">Cameroon</option>
+                    <option value="1">Canada</option>
+                    <option value="1">Cape Verde</option>
+                    <option value="1">Cayman Islands</option>
+                    <option value="1">Central African Republic</option>
+                    <option value="1">Chad</option>
+                    <option value="1">Chile</option>
+                    <option value="1">China</option>
+                    <option value="1">Christmas Island</option>
+                    <option value="1">Clipperton Island</option>
+                    <option value="1">Cocos (Keeling) Islands</option>
+                    <option value="1">Colombia</option>
+                    <option value="1">Comoros</option>
+                    <option value="1">Congo, Democratic Republic of the</option>
+                    <option value="1">Congo, Republic of the</option>
+                    <option value="1">Cook Islands</option>
+                    <option value="1">Coral Sea Islands</option>
+                    <option value="1">Costa Rica</option>
+                    <option value="1">Cote d'Ivoire</option>
+                    <option value="1">Croatia</option>
+                    <option value="1">Cuba</option>
+                    <option value="1">Cyprus</option>
+                    <option value="1">Czech Republic</option>
+                    <option value="1">Denmark</option>
+                    <option value="1">Dhekelia</option>
+                    <option value="1">Djibouti</option>
+                    <option value="1">Dominica</option>
+                    <option value="1">Dominican Republic</option>
+                    <option value="1">Ecuador</option>
+                    <option value="1">Egypt</option>
+                    <option value="1">El Salvador</option>
+                    <option value="1">Equatorial Guinea</option>
+                    <option value="1">Eritrea</option>
+                    <option value="1">Estonia</option>
+                    <option value="1">Ethiopia</option>
+                    <option value="1">Europa Island</option>
+                    <option value="1">Falkland Islands (Islas Malvinas)</option>
+                    <option value="1">Faroe Islands</option>
+                    <option value="1">Fiji</option>
+                    <option value="1">Finland</option>
+                    <option value="1">France</option>
+                    <option value="1">French Guiana</option>
+                </select>
+            </div>
+            <div class="selCont">
+                <h2>Intelligent positioning</h2>
+                <p>Stylish Select will always remain visible on the page.</p>
+                <select id="my-dropdown4" name="my-dropdown">
+                    <optgroup label="Tool">
+                        <option value="1">Opiate</option>
+                        <option value="2">Undertow</option>
+                        <option value="3">Aenima</option>
+                        <option value="4">Lateralus</option>
+                    </optgroup>
+                    <optgroup label="A Tribe Called Quest">
+                        <option value="5">People's Instinctive Travels and the Paths of Rhythm</option>
+                        <option value="6">The Low End Theory</option>
+                        <option value="7" selected="selected">Midnight Marauders</option>
+                        <option value="8">Beats, Rhymes and Life</option>
+                        <option value="9">The Love Movement</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="selCont">
+                <h2>Disabled Select</h2>
+                <select disabled="disabled" id="my-dropdown7" name="my-dropdown">
+                    <option value="1">Opiate</option>
+                    <option value="2">Undertow</option>
+                    <option value="3">Aenima</option>
+                    <option value="4">Lateralus</option>
+                    <option value="9">The Love Movement</option>
+                </select>
+            </div>
+            <div class="selCont">
+                <h2>Disabled Options</h2>
+                <select id="my-dropdown8" name="my-dropdown">
+                    <option value="1">Opiate</option>
+                    <option disabled="disabled" value="2">Undertow</option>
+                    <option value="3">Aenima</option>
+                    <option selected="selected" value="4">Lateralus</option>
+                    <option value="9">The Love Movement</option>
+                </select>
+            </div>
+            <div class="selCont">
+                <h2>Disabled Grouped options</h2>
+                <select id="my-dropdown9" name="my-dropdown">
+                    <optgroup label="Tool" disabled="disabled">
+                        <option value="1">Opiate</option>
+                        <option value="2">Undertow</option>
+                        <option value="3">Aenima</option>
+                        <option value="4">Lateralus</option>
+                    </optgroup>
+                    <optgroup label="A Tribe Called Quest">
+                        <option value="5">People's Instinctive Travels and the Paths of Rhythm</option>
+                        <option value="6">The Low End Theory</option>
+                        <option value="7" selected="selected">Midnight Marauders</option>
+                        <option value="8">Beats, Rhymes and Life</option>
+                        <option value="9">The Love Movement</option>
+                    </optgroup>
+                </select>
+            </div>
+        </form>
+    </body>
+</html>
