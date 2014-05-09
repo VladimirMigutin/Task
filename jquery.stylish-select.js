@@ -144,7 +144,6 @@
 
             // Sets the timeout values and returns the needed value's index
             function SearchWithin(letter) {
-                LettersBuffer += letter;
 
                 if(myTimeout) {clearTimeout(myTimeout)}
                 myTimeout = setTimeout (function(){ResetStack()},2000)
@@ -154,8 +153,9 @@
 
 
             // Initialize the Subarray according to the first entered letter
-            function PopulateSubArray(arr){
-                    arr.forEach(function(item, index){
+            function PopulateSubArray(letter){
+
+                    OriginalArray.forEach(function(item, index){
                         if (item.toLowerCase().indexOf(LettersBuffer.toString().toLowerCase()) == 0) {
                             SubArraykeys.push({OriginalIndex: index, OriginalValue: item})
                         }
@@ -180,7 +180,7 @@
                     }
             }
 
-            // Clears the Stack if the dropdownlist is blurred or four seconds pass
+            // Clears the Stack if the dropdownlist is blurred or two seconds pass
             function ResetStack(){
                 SubArraykeys         = [];
                 KeysCounter          = 0;
@@ -441,10 +441,11 @@
 
                     //check for keyboard shortcuts
                     keyPressed = String.fromCharCode(keycode).toLowerCase();
+                    LettersBuffer += keyPressed;
 
                     if(!KeysCounter)
                     {
-                         PopulateSubArray(OriginalArray);
+                         PopulateSubArray(keyPressed);
                          KeysCounter++;
                     }
                     var currentKeyIndex = SearchWithin(keyPressed);
